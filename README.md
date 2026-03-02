@@ -41,9 +41,8 @@ Por cada módulo crear configuración `Application`:
 
 **Variables de entorno** (formato: `CLAVE=valor;CLAVE2=valor2`):
 ```
-DB_USERNAME=<postgres>;DB_PASSWORD=<postgres>;DB_HOST=<localhost>;DB_PORT=<5432>;DB_NAME=<restaurant-admin>
+DB_USERNAME=<postgres>;DB_PASSWORD=<postgres>;DB_HOST=<localhost>;DB_PORT=<5432>;DB_NAME=<restaurant-db>
 ```
-(Ajustar según módulo: `restaurant_admin` para administrator, `restaurant_orders` para orders)
 
 ### Ejecución
 
