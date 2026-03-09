@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: ms_orders
+  webflux:
+    base-path: /order
+  r2dbc:
+    url: r2dbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}?sslMode=require
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+
+server:
+  port: 8082
+
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    enabled: true
+    # Opcional: forzar URL de docs si el redirect falla
+    url: /v3/api-docs
+    # Mostrar tambi�n en la UI de Swagger la base-path
+    disable-swagger-default-url: true

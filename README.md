@@ -59,9 +59,12 @@ Seleccionar configuración y ejecutar.
 ### Endpoints de prueba
 
 - **ms_administrator** (puerto 8081)  
-  `GET /api/test/greeting` → texto plano  
-  Swagger UI: `http://localhost:8081/api/swagger-ui.html`  
-  Actuator: `http://localhost:8081/api/actuator/health`
+  `GET /admin/test/greeting` → texto plano  
+  Swagger UI: `http://localhost:8081/admin/swagger-ui.html`  
+  Actuator: `http://localhost:8081/admin/actuator/health`
+
+- **ms_orders** (puerto 8082)  
+  Swagger UI: `http://localhost:8082/order/swagger-ui.html`
 
 - **ms_apigateway** (puerto 8080)  
   *pendiente de configuración de rutas*
@@ -70,11 +73,11 @@ Seleccionar configuración y ejecutar.
 
 ```bash
 # Endpoint de prueba
-curl http://localhost:8081/api/test/greeting
+curl http://localhost:8081/admin/test/greeting
 
 # Health check
-curl http://localhost:8081/api/actuator/health
+curl http://localhost:8081/admin/actuator/health
 
 # OpenAPI spec
-curl http://localhost:8081/api/v3/api-docs
+curl http://localhost:8081/admin/v3/api-docs
 ```

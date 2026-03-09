@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: ms_APIGateway
+  webflux:
+    base-path: /admin
+  r2dbc:
+    url: r2dbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}?sslMode=require
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+
+server:
+  port: 8080
+
+cloud:
+  gateway:
+    routes:
+      - id: administrator-ms
+        uri: http://localhost:8081
+        predicates:
+          - Path=/api/admin/**
+        filters:
+          - StripPrefix=1
+
+      - id: orders-ms
+        uri: http://localhost:8082
+        predicates:
+          - Path=/api/orders/**
+        filters:
+          - StripPrefix=1
+
+  loadbalancer:
+    enabled: true
