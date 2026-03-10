@@ -56,7 +56,7 @@ Una vez creadas, las tres configuraciones aparecerán agrupadas bajo un nodo lla
 1. Abrir `View → Tool Windows → Services` (`Alt + 8`).
 2. En el árbol, localizar el grupo **Application** (el nodo padre que contiene las tres configuraciones).
 3. Seleccionar el grupo **Application** y hacer clic en el botón **Run** (▶) para iniciar **todos los microservicios a la vez**.
-  - También puedes ejecutar microservicios individualmente haciendo clic sobre cada configuración hija, pero para el funcionamiento completo del sistema es preferible lanzar el grupo completo.
+- También puedes ejecutar microservicios individualmente haciendo clic sobre cada configuración hija, pero para el funcionamiento completo del sistema es preferible lanzar el grupo completo.
 
 #### Desde terminal con Gradle
 ```bash
@@ -64,6 +64,56 @@ Una vez creadas, las tres configuraciones aparecerán agrupadas bajo un nodo lla
 ./gradlew :ms_administrator:bootRun
 ./gradlew :ms_orders:bootRun
 ./gradlew :ms_apigateway:bootRun
+```
+
+### Esquema "Restaurante" de la Base de Datos
+
+```mermaid
+erDiagram
+    menu_classifications {
+        int4 id PK
+        varchar250 name
+        varchar250 description
+        timestamp created_at
+        timestamp updated_at
+    }
+
+    menu_items {
+        serial4 id PK
+        varchar500 name
+        text description
+        numeric10 price
+        bool available
+        timestamp updated_at
+        timestamp created_at
+        text imagen_thumbnail_url
+        int4 id_classification FK
+    }
+
+    orders {
+        serial4 id PK
+        int4 id_table
+        varchar250 customer_name
+        bool open
+        numeric10 total_cost
+        text notes
+        timestamp created_at
+        timestamp updated_at
+        timestamp closed_at
+    }
+
+    order_items {
+        int id PK
+        int order_id FK
+        int menu_item_id FK
+        int quantity
+        numeric10_2 unit_price
+        numeric10_2 subtotal
+    }
+
+    menu_classifications ||--o{ menu_items : classifies
+    orders ||--o{ order_items : contains
+    menu_items ||--o{ order_items : "is included in"
 ```
 
 ### Endpoints de prueba
