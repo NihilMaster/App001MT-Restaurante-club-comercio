@@ -1,7 +1,6 @@
 package org.mt.ms_administrator.domain.model;
 
 import lombok.*;
-
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
@@ -9,13 +8,11 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class MenuItem {
+public class OrderSummary {
     private Long id;
-    private String name;
-    private String description;
-    private BigDecimal price;
-    private Long classificationId;
-    private Boolean available;
+    private Long tableNumber;
+    private String customerName;
+    private BigDecimal totalCost;
     private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
+    private LocalDateTime closedAt;
 }
