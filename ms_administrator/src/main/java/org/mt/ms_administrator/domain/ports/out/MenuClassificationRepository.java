@@ -6,6 +6,7 @@ import reactor.core.publisher.Mono;
 
 public interface MenuClassificationRepository {
     Mono<MenuClassification> save(MenuClassification classification);
+    Mono<MenuClassification> update(MenuClassification classification);
     Mono<MenuClassification> findById(Long id);
     Flux<MenuClassification> findAll();
     Mono<Void> delete(Long id);
